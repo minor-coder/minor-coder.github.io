@@ -5,6 +5,29 @@
 $sans-serif: 'RIDIBatang';
 $monospace: 'Cascadia Code PL';
 
+$primary-color: #E69587;
+$text-color: #eaeaea;
+$link-color: $primary-color;
+$link-color-visited: $primary-color;
+
+// code-block color
+$base00: #212121;
+$base01: #82aaff;
+$base02: #4a4a4a;
+$base03: #82AAFF;
+$base04: #89DDFF;
+$base05: #C3E88D;
+$base06: #C792EA;
+$base07: #F07178;
+$base08: #FFFFFF;
+$base09: #FFCB6B;
+$base0a: #89DDFF;
+$base0b: #C3E88D;
+$base0c: #C792EA;
+$base0d: #F07178;
+$base0e: #EEFFFF;
+$base0f: #FFCB6B;
+
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
