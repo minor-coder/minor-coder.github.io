@@ -1,0 +1,22 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+@font-face {
+    font-family: 'RIDIBatang';
+    src: url('./assets/fonts/RIDIBatang/RIDIBatang.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cascadia Code PL';
+    src: url('./assets/fonts/Cascadia/CascadiaCodePL.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
