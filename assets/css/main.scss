@@ -1,6 +1,9 @@
-// ---
-// # Only the main Sass file needs front matter (the dashes are enough)
-// ---
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+$sans-serif: 'RIDIBatang';
+$monospace: 'Cascadia Code PL';
 
 @charset "utf-8";
 
@@ -9,11 +12,15 @@
 
 @font-face {
     font-family: 'RIDIBatang';
-    src: url('https://minor-coder.github.io/assets/fonts/RIDIBatang/RIDIBatang.woff') format('woff');
+    src: url('/assets/fonts/RIDIBatang/RIDIBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'Cascadia Code PL';
-    src: url('https://minor-coder.github.io/assets/fonts/Cascadia/CascadiaCodePL.woff2') format('woff2'),
-         url('https://minor-coder.github.io/assets/fonts/Cascadia/CascadiaCodePL.ttf') format('truetype');
+    src: url('/assets/fonts/Cascadia/CascadiaCodePL.woff2') format('woff2'),
+         url('/assets/fonts/Cascadia/CascadiaCodePL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }

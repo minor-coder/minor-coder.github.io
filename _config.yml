@@ -62,7 +62,7 @@ plugins:
 author:
   name   : "minor-coder"
   avatar : "/assets/images/profile.jpg"
-  bio    : "상명대학교<br>가구조형전공"
+  bio    : "백수"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
