@@ -22,9 +22,10 @@ github_username: minor-coder
 minimal_mistakes_skin: dark
 search: true
 comments:
-  provider: "disqus"
-  disqus:
-    shortname : "minorcoder"
+  provider: "utterances"
+  utterances:
+    theme                : "photon-dark" #(default), "github-dark"
+    issue_term           : "pathname" #(default)
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
