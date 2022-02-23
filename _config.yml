@@ -21,7 +21,10 @@ twitter_username: username
 github_username: minor-coder
 minimal_mistakes_skin: dark
 search: true
-
+comments:
+  provider: "disqus"
+  disqus:
+    shortname : "minorcoder"
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
