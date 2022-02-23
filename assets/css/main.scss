@@ -10,13 +10,10 @@
 @font-face {
     font-family: 'RIDIBatang';
     src: url('/assets/fonts/RIDIBatang/RIDIBatang.otf') format('woff');
-    font-weight: normal;
-    font-style: normal;
 }
 
 @font-face {
     font-family: 'Cascadia Code PL';
-    src: url('/assets/fonts/Cascadia/CascadiaCodePL.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+    src: url('/assets/fonts/Cascadia/CascadiaCodePL.woff2') format('woff2'),
+         url('/assets/fonts/Cascadia/CascadiaCodePL.ttf') format('truetype');
 }
