@@ -1278,3 +1278,6 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
   .masthead, .toc, .page__share, .page__related, .pagination, .ads, .page__footer, .page__comments-form, .author__avatar, .author__content, .author__urls-wrapper, .nav__list, .sidebar, .adsbygoogle { display: none !important; height: 1px !important; } }
 @font-face { font-family: 'RIDIBatang'; src: url("/assets/fonts/RIDIBatang/RIDIBatang.woff") format("woff"); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'Cascadia Code PL'; src: url("/assets/fonts/Cascadia/CascadiaCodePL.woff2") format("woff2"), url("/assets/fonts/Cascadia/CascadiaCodePL.ttf") format("truetype"); font-weight: normal; font-style: normal; }
+.sidebar-hits { height: 20px; margin-bottom: 20px; }
+
+.sidebar-hits img { width: auto; }
