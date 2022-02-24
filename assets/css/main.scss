@@ -30,6 +30,24 @@ $base0d: #F07178;
 $base0e: #EEFFFF;
 $base0f: #FFCB6B;
 
+// type scale
+$type-size-1  : 2.441em;  // 2.441em;
+$type-size-2  : 1.953em;  // 1.953em;
+$type-size-3  : 1.4em;    // 1.563em;
+$type-size-4  : 1.2em;    // 1.25em;
+$type-size-5  : 0.9em;    // 1em;
+$type-size-6  : 0.75em;   // 0.75em;
+$type-size-7  : 0.6875em; // 0.6875em;
+$type-size-8  : 0.625em;  // 0.625em;
+
+/* headline scale */
+$h-size-1: 1.4em;    // 1.563em;
+$h-size-2: 1.2em;    // 1.25em;
+$h-size-3: 1.1em;    // 1.125em;
+$h-size-4: 1.05em;   // 1.0625em;
+$h-size-5: 1.025em;  // 1.03125em;
+$h-size-6: 1.0125em; // 1em;
+
 @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
@@ -66,3 +84,23 @@ $base0f: #FFCB6B;
 .sidebar-hits img{
     width: auto;
 }
+
+// font size
+html {
+    font-size: 14px;
+  
+    @include breakpoint($medium) {
+      font-size: 16px;
+    }
+  
+    @include breakpoint($large) {
+      font-size: 18px;
+    }
+  
+    @include breakpoint($x-large) {
+      font-size: 20px;
+    }
+  
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
