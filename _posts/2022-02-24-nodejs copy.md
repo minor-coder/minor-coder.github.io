@@ -1,8 +1,8 @@
 ---
-title: "테스트입니다."
+title: "node.js 개념"
 excerpt_separator: "<!--more-->"
 categories:
-  - Blog
+  - node.js
 tags:
   - node.js
   - study

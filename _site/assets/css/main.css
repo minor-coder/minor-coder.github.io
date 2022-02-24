@@ -1289,3 +1289,16 @@ html { font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 @media (min-width: 48em) { html { font-size: 16px; } }
 @media (min-width: 64em) { html { font-size: 18px; } }
 @media (min-width: 80em) { html { font-size: 20px; } }
+
+.page__hero-image { object-fit: cover; max-height: 30vw; }
+
+.posts-image-center { display: block; margin: auto; }
+
+.utterances { max-width: 100% !important; }
+
+.pagination_prev_next { clear: both; float: left; width: 100%; /* next/previous buttons */ }
+.pagination_prev_next::after { clear: both; content: ""; display: table; }
+.pagination_prev_next--pager { margin-top: 0em; padding-top: 0em; display: block; padding: 1em 2em; width: 100%; font-family: "RIDIBatang"; font-size: 0.9em; font-weight: bold; text-align: center; text-decoration: none; color: #eeeeee; border: 1px solid #51555d; border-radius: 4px; color: #eaeaea !important; }
+.pagination_prev_next--pager .prev_next { font-family: "RIDIBatang"; color: #E69587; }
+.pagination_prev_next--pager.disabled { color: #8c8c8c !important; margin-bottom: 0; }
+.pagination_prev_next--pager:hover { background-color: #3a3f48 !important; }

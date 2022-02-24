@@ -1,0 +1,758 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>테스트입니다. - minor-coder</title>
+<meta name="description" content="node.js란?    Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.   노드의 내부 구조 ┌──────────────────────┐ | Node.js Core Library | ├──────────────────────┤ |   Node.js Bindings   | ├──────────────────────┤ |    V8    |   libuv   | └──────────────────────┘   노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다. libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다.    이벤트 기반    이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식.    ex) 마우스 클릭, 네트워크 요청   이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다.  이벤트 루프    이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함.        Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능)     Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음)      논 블로킹 I/O Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다.  논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다.  또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수)  function longRunningTask(){   console.log(&#39;작업 끝&#39;); }  console.log(&#39;시작&#39;); setTimeout(longRunningTask, 0); // longRunningTask() console.log(&#39;다음 작업&#39;);   result  시작 다음작업 작업 끝   싱글 스레드    스레드는 프로세스 내에서 실행되는 흐름의 단위이다.  프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능)   사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다. (다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.)                 멀티 스레딩       멀티 프로세싱                       한 개의 프로세스, 여러 개의 스레드       여러 개의 프로세스                 CPU 작업이 많을 때 사용       I/O요청이 많을 때 사용                 프로그래밍이 어려움       프로그래밍이 비교적 쉬움             서버로서의 노드">
+
+
+  <meta name="author" content="minor-coder">
+  
+  <meta property="article:author" content="minor-coder">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="minor-coder">
+<meta property="og:title" content="테스트입니다.">
+<meta property="og:url" content="http://localhost:4000/blog/nodejs/">
+
+
+  <meta property="og:description" content="node.js란?    Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.   노드의 내부 구조 ┌──────────────────────┐ | Node.js Core Library | ├──────────────────────┤ |   Node.js Bindings   | ├──────────────────────┤ |    V8    |   libuv   | └──────────────────────┘   노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다. libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다.    이벤트 기반    이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식.    ex) 마우스 클릭, 네트워크 요청   이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다.  이벤트 루프    이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함.        Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능)     Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음)      논 블로킹 I/O Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다.  논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다.  또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수)  function longRunningTask(){   console.log(&#39;작업 끝&#39;); }  console.log(&#39;시작&#39;); setTimeout(longRunningTask, 0); // longRunningTask() console.log(&#39;다음 작업&#39;);   result  시작 다음작업 작업 끝   싱글 스레드    스레드는 프로세스 내에서 실행되는 흐름의 단위이다.  프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능)   사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다. (다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.)                 멀티 스레딩       멀티 프로세싱                       한 개의 프로세스, 여러 개의 스레드       여러 개의 프로세스                 CPU 작업이 많을 때 사용       I/O요청이 많을 때 사용                 프로그래밍이 어려움       프로그래밍이 비교적 쉬움             서버로서의 노드">
+
+
+
+  <meta property="og:image" content="https://images.unsplash.com/photo-1641736494173-e7d5775121b2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8">
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-24T00:00:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/nodejs/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="minor-coder Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/assets/logo.ico/site.webmanifest">
+<link rel="mask-icon" href="/assets/logo.ico/safari-pinned-tab.svg" color="#333333">
+<meta name="msapplication-TileColor" content="#333333">
+<meta name="theme-color" content="#333333">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/logo.ico/android-chrome-96x96.png" alt="minor-coder"></a>
+        
+        <a class="site-title" href="/">
+          minor-coder
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1641736494173-e7d5775121b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          테스트입니다.
+
+        
+      </h1>
+      
+      
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-24T00:00:00+09:00">2022.02.24</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+</div>
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/profile.jpg" alt="minor-coder" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">minor-coder</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>백수</p>
+
+      </div>
+      <div class="sidebar-hits">
+        <a href="https://hits.sh/blog.minorcode.co.kr/"><img src="https://hits.sh/blog.minorcode.co.kr.svg?view=today-total&label=hits.&color=E69587&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNS4zLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0i66CI7J207Ja0XzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCINCgkgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIwIDEyMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9DQo8L3N0eWxlPg0KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMTIwLjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSI%2BDQoJPHBhdGggY2xhc3M9InN0MCIgZD0iTTU5OCwxMTczYy05LTItMjQtMTktMzMtMzZjLTktMTgtMjktNTQtNDYtODJjLTE2LTI3LTM1LTYxLTQyLTc1Yy02LTE0LTE0LTI3LTE4LTMwYy0zLTMtMTgtMjktMzQtNTcNCgkJYy0xNS0yOS0zMi01My0zNi01M3MtMTUsMjUtMjQsNTVjLTgsMzAtMTcsNTUtMTksNTVjLTgsMC04NC0xMjctMTE0LTE5MUMxMDAsNDgyLDE3OSwxODEsNDEzLDY3YzI0MC0xMTYsNTE0LDYsNjAyLDI2OA0KCQljMTksNTYsMjMsMjA0LDYsMjQ2Yy01LDE1LTgsMjktNSwzMWM0LDQtMTUsNjgtMzMsMTA4Yy0zLDgtNywxNy03LDIwYy02LDIyLTY2LDEyNi0xMDQsMTgwYy00OSw2OC0yMDUsMjMxLTIzOCwyNDcNCgkJQzYyNCwxMTcyLDYwOCwxMTc1LDU5OCwxMTczeiIvPg0KPC9nPg0KPC9zdmc%2BDQo%3D"/></a>
+      </div>
+      
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">merrydoghaus</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="https://minorcode.co.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i><span class="label">Website</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/minor-coder" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="테스트입니다.">
+    <meta itemprop="description" content="node.js란?  Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.노드의 내부 구조┌──────────────────────┐| Node.js Core Library |├──────────────────────┤|   Node.js Bindings   |├──────────────────────┤|    V8    |   libuv   |└──────────────────────┘노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다.libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다.이벤트 기반  이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식.  ex) 마우스 클릭, 네트워크 요청이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다.이벤트 루프  이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함.      Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능)    Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음)  논 블로킹 I/OJavascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다.논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다.또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수)function longRunningTask(){  console.log(&#39;작업 끝&#39;);}console.log(&#39;시작&#39;);setTimeout(longRunningTask, 0); // longRunningTask()console.log(&#39;다음 작업&#39;);result시작다음작업작업 끝싱글 스레드  스레드는 프로세스 내에서 실행되는 흐름의 단위이다. 프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능)사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다.(다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.)            멀티 스레딩      멀티 프로세싱                  한 개의 프로세스, 여러 개의 스레드      여러 개의 프로세스              CPU 작업이 많을 때 사용      I/O요청이 많을 때 사용              프로그래밍이 어려움      프로그래밍이 비교적 쉬움      서버로서의 노드">
+    <meta itemprop="datePublished" content="2022-02-24T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#nodejs란">node.js란?</a><ul><li><a href="#노드의-내부-구조">노드의 내부 구조</a></li><li><a href="#이벤트-기반">이벤트 기반</a><ul><li><a href="#이벤트-루프">이벤트 루프</a></li><li><a href="#논-블로킹-io">논 블로킹 I/O</a></li><li><a href="#싱글-스레드">싱글 스레드</a></li></ul></li><li><a href="#서버로서의-노드">서버로서의 노드</a></li></ul></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p><img src="https://blog.kakaocdn.net/dn/y1eTS/btqJn1bFA22/Svn0GlZPcnkzFFKFCOhvn0/img.png" alt="node.js logo" width="400px" class="align-center" /></p>
+
+<h1 id="nodejs란">node.js란?</h1>
+<blockquote>
+  <p>Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.</p>
+</blockquote>
+
+<h2 id="노드의-내부-구조">노드의 내부 구조</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>┌──────────────────────┐
+| Node.js Core Library |
+├──────────────────────┤
+|   Node.js Bindings   |
+├──────────────────────┤
+|    V8    |   libuv   |
+└──────────────────────┘
+</code></pre></div></div>
+
+<p>노드는 <code class="language-plaintext highlighter-rouge">V8 Javascript</code> 엔진과 함께 <code class="language-plaintext highlighter-rouge">libuv</code> 라이브러리를 사용한다.
+<code class="language-plaintext highlighter-rouge">libuv</code>라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다.</p>
+
+<hr />
+
+<h2 id="이벤트-기반">이벤트 기반</h2>
+<blockquote>
+  <p>이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식.</p>
+
+  <p>ex) 마우스 클릭, 네트워크 요청</p>
+</blockquote>
+
+<p>이벤트 기반 시스템은 <code class="language-plaintext highlighter-rouge">이벤트 리스너</code>, <code class="language-plaintext highlighter-rouge">콜백함수</code>를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다.</p>
+
+<h3 id="이벤트-루프">이벤트 루프</h3>
+<blockquote>
+  <p>이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 <code class="language-plaintext highlighter-rouge">콜백함수</code>를 호출 할 지 판단함.</p>
+  <ul>
+    <li>Background : <code class="language-plaintext highlighter-rouge">setTimeout</code>같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능)</li>
+    <li>Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 <code class="language-plaintext highlighter-rouge">콜백함수</code>를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음)</li>
+  </ul>
+</blockquote>
+
+<h3 id="논-블로킹-io">논 블로킹 I/O</h3>
+<p>Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">논 블로킹</code>이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다.</p>
+
+<p>또한, I/O작업이라라도 <code class="language-plaintext highlighter-rouge">논 블로킹</code> 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수)</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">longRunningTask</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">작업 끝</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">시작</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">longRunningTask</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// longRunningTask()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">다음 작업</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result
+
+시작
+다음작업
+작업 끝
+</code></pre></div></div>
+
+<h3 id="싱글-스레드">싱글 스레드</h3>
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">스레드</code>는 <code class="language-plaintext highlighter-rouge">프로세스</code> 내에서 실행되는 <strong>흐름의 단위</strong>이다. 
+<code class="language-plaintext highlighter-rouge">프로세스</code>는 <code class="language-plaintext highlighter-rouge">스레드</code>를 여러 개 생성해 작업을 동시에 처리할 수 있고, <code class="language-plaintext highlighter-rouge">스레드</code>는 <code class="language-plaintext highlighter-rouge">부모 프로세스</code>의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능)</p>
+</blockquote>
+
+<p>사실 <strong>node.js</strong>는 <code class="language-plaintext highlighter-rouge">싱글 스레드</code>가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 <code class="language-plaintext highlighter-rouge">스레드</code>는 하나 뿐이라 <strong>node.js는 싱글 스레드</strong>라고 여겨진다.
+<br />(다만, <code class="language-plaintext highlighter-rouge">스레드풀</code>, <code class="language-plaintext highlighter-rouge">워커 스레드</code>로 <code class="language-plaintext highlighter-rouge">멀티 스레드</code>를 사용 할 수 있다.)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">멀티 스레딩</th>
+      <th style="text-align: center">멀티 프로세싱</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">한 개의 프로세스, 여러 개의 스레드</td>
+      <td style="text-align: center">여러 개의 프로세스</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">CPU 작업이 많을 때 사용</td>
+      <td style="text-align: center">I/O요청이 많을 때 사용</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">프로그래밍이 어려움</td>
+      <td style="text-align: center">프로그래밍이 비교적 쉬움</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="서버로서의-노드">서버로서의 노드</h2>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#node-js" class="page__taxonomy-item" rel="tag">node.js</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#blog" class="page__taxonomy-item" rel="tag">Blog</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2022-02-24T00:00:00+09:00">2022.02.24</time></p>
+
+
+      </footer>
+
+      
+
+      <!-- Original Code -->
+<!-- 
+  <nav class="pagination">
+    
+      <a href="/node.js/nodejs-copy/" class="pagination--pager" title="node.js 개념
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+ -->
+
+
+
+
+  
+  	
+  	
+  	
+  	
+  	
+
+
+  <nav class="pagination pagination_prev_next">
+    
+      <a href="/blog/new/" class="pagination_prev_next--pager"><span class="prev_next">Previous  &nbsp</span>Post: Standard</a>
+    
+    
+      <p class="pagination_prev_next--pager disabled">This is the most recent post.</p>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/node.js/nodejs-copy/" rel="permalink">node.js 개념
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-24T00:00:00+09:00">2022.02.24</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+node.js란?
+
+  Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.
+
+
+노드의 내부 구조
+┌──────────────────────┐
+| Node.js Core Library |
+├──────────────────────┤
+|   Node....</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/new/" rel="permalink">Post: Standard
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-23T00:00:00+09:00">2022.02.23</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">H1 header
+
+H2 header
+
+H3 header
+
+H4 header
+
+H5 header
+
+H6 header
+
+First level header
+
+Second level header
+
+
+  A sample blockquote.
+
+  
+    Nested blockquotes...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://minorcode.co.kr" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+        
+      
+        
+          <li><a href="https://github.com/minor-coder" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 minor-coder. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'minor-coder/minor-coder.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    script.setAttribute('label', 'blog-comment');
+    script.setAttribute('theme', 'photon-dark');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>

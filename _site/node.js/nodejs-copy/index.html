@@ -23,14 +23,14 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="minor-coder">
 <meta property="og:title" content="node.js 개념">
-<meta property="og:url" content="http://localhost:4000/node.js/nodejs/">
+<meta property="og:url" content="http://localhost:4000/node.js/nodejs-copy/">
 
 
   <meta property="og:description" content="node.js란?    Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.   노드의 내부 구조 ┌──────────────────────┐ | Node.js Core Library | ├──────────────────────┤ |   Node.js Bindings   | ├──────────────────────┤ |    V8    |   libuv   | └──────────────────────┘   노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다. libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다.    이벤트 기반    이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식.    ex) 마우스 클릭, 네트워크 요청   이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다.  이벤트 루프    이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함.        Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능)     Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음)      논 블로킹 I/O Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다.  논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다.  또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수)  function longRunningTask(){   console.log(&#39;작업 끝&#39;); }  console.log(&#39;시작&#39;); setTimeout(longRunningTask, 0); // longRunningTask() console.log(&#39;다음 작업&#39;);   result  시작 다음작업 작업 끝   싱글 스레드    스레드는 프로세스 내에서 실행되는 흐름의 단위이다.  프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능)   사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다. (다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.)                 멀티 스레딩       멀티 프로세싱                       한 개의 프로세스, 여러 개의 스레드       여러 개의 프로세스                 CPU 작업이 많을 때 사용       I/O요청이 많을 때 사용                 프로그래밍이 어려움       프로그래밍이 비교적 쉬움             서버로서의 노드">
 
 
 
-  <meta property="og:image" content="http://localhost:4000/assets/logo.ico/apple-touch-icon.png">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1641736494173-e7d5775121b2?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8">
 
 
 
@@ -43,7 +43,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/node.js/nodejs/">
+<link rel="canonical" href="http://localhost:4000/node.js/nodejs-copy/">
 
 
 
@@ -152,6 +152,62 @@
 
     <div class="initial-content">
       
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1641736494173-e7d5775121b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          node.js 개념
+
+        
+      </h1>
+      
+      
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-24T00:00:00+09:00">2022.02.24</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+</div>
+
+
 
 
 
@@ -278,41 +334,6 @@
     
 
     <div class="page__inner-wrap">
-      
-        <header>
-          <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/node.js/nodejs/" class="u-url" itemprop="url">node.js 개념
-</a>
-          </h1>
-          
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2022-02-24T00:00:00+09:00">2022.02.24</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-        </header>
       
 
       <section class="page__content e-content" itemprop="text">
@@ -473,16 +494,30 @@
 
       
 
-      
+      <!-- Original Code -->
+<!-- 
   <nav class="pagination">
     
       <a href="/blog/new/" class="pagination--pager" title="Post: Standard
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="/blog/nodejs/" class="pagination--pager" title="테스트입니다.
+">Next</a>
     
   </nav>
+ -->
+
+
+
+
+  
+  	
+  	
+  	
+  	
+  	
+
 
     </div>
 
@@ -494,6 +529,63 @@
     <div class="page__related">
       <h2 class="page__related-title">You May Also Enjoy</h2>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/nodejs/" rel="permalink">테스트입니다.
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-24T00:00:00+09:00">2022.02.24</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+
+node.js란?
+
+  Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.
+
+
+노드의 내부 구조
+┌──────────────────────┐
+| Node.js Core Library |
+├──────────────────────┤
+|   Node....</p>
+  </article>
+</div>
+
         
           
 
