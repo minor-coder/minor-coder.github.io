@@ -5,10 +5,12 @@
 $sans-serif: 'RIDIBatang';
 $monospace: 'Cascadia Code PL';
 
+// color
 $primary-color: #E69587;
 $text-color: #eaeaea;
 $link-color: $primary-color;
 $link-color-visited: $primary-color;
+$active-color: #3a3f48;
 
 // code-block color
 $base00: #212121;
@@ -48,6 +50,14 @@ $base0f: #FFCB6B;
     font-style: normal;
 }
 
+// toc
+.toc {
+    .nav__title {
+        background: mix(#000, $primary-color, 20%);
+    }
+}
+
+// sidebar
 .sidebar-hits{
     height: 20px;
     margin-bottom: 20px;

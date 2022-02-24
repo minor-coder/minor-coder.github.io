@@ -7,7 +7,7 @@ main:
     url: /tags/
 
 categories:
-  - title: "CATEGORIES"
+  - title: "Categories"
     children:
       - title: "node.js"
         url: /posts/nodejs/
