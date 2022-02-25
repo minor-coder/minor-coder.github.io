@@ -1281,7 +1281,7 @@ body { display: -webkit-box; display: -ms-flexbox; display: flex; min-height: 10
 @font-face { font-family: 'Cascadia Code PL'; src: url("/assets/fonts/Cascadia/CascadiaCodePL.woff2") format("woff2"), url("/assets/fonts/Cascadia/CascadiaCodePL.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 .toc .nav__title { background: #b8776c; }
 
-.sidebar-hits { height: 20px; margin-bottom: 20px; }
+.sidebar-hits { height: 20px; }
 
 .sidebar-hits img { width: auto; }
 
@@ -1292,7 +1292,15 @@ html { font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 
 .page__hero-image { object-fit: cover; max-height: 30vw; }
 
-.posts-image-center { display: block; margin: auto; }
+.page__title { color: #E69587; }
+
+.page__meta, .comment__date { margin-bottom: 1em; }
+
+.page__taxonomy { font-size: 0.75em; margin: 0; }
+
+.page__taxonomy:last-child { margin-bottom: 1.3em; }
+
+.page__taxonomy-item { padding: 5px 5px; font-size: 0.6875em; }
 
 .utterances { max-width: 100% !important; }
 
@@ -1302,3 +1310,5 @@ html { font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 .pagination_prev_next--pager .prev_next { font-family: "RIDIBatang"; color: #E69587; }
 .pagination_prev_next--pager.disabled { color: #8c8c8c !important; margin-bottom: 0; }
 .pagination_prev_next--pager:hover { background-color: #3a3f48 !important; }
+
+.archive__item-title { color: #E69587; }

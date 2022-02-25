@@ -78,7 +78,6 @@ $h-size-6: 1.0125em; // 1em;
 // sidebar
 .sidebar-hits{
     height: 20px;
-    margin-bottom: 20px;
 }
 
 .sidebar-hits img{
@@ -111,10 +110,29 @@ html {
     max-height: 30vw;
 }
 
-// posts image
-.posts-image-center{
-    display: block;
-    margin: auto;
+// page__title
+.page__title{
+    color: $primary-color;
+}
+
+// page meta
+.page__meta{
+    margin-bottom: 1em;
+}
+
+// page taxamony
+.page__taxonomy {
+    font-size: $type-size-6;
+    margin: 0;
+}
+
+.page__taxonomy:last-child{
+    margin-bottom: 1.3em;
+}
+
+.page__taxonomy-item {
+    padding: 5px 5px;
+    font-size: $type-size-7;
 }
 
 // comment width
@@ -122,6 +140,7 @@ html {
     max-width: 100% !important;
 }
 
+// pagination
 .pagination_prev_next {
     @include clearfix();
     float: left;
@@ -158,4 +177,9 @@ html {
     &--pager:hover {
         background-color: $active-color !important;
     }
+}
+
+// related
+.archive__item-title{
+    color: $primary-color;
 }

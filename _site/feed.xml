@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-25T10:15:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">minor-coder</title><subtitle>안뇽</subtitle><author><name>minor-coder</name></author><entry><title type="html">node.js 개념</title><link href="http://localhost:4000/node.js/nodejs-copy/" rel="alternate" type="text/html" title="node.js 개념" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/node.js/nodejs%20copy</id><content type="html" xml:base="http://localhost:4000/node.js/nodejs-copy/">&lt;p&gt;&lt;img src=&quot;https://blog.kakaocdn.net/dn/y1eTS/btqJn1bFA22/Svn0GlZPcnkzFFKFCOhvn0/img.png&quot; alt=&quot;node.js logo&quot; width=&quot;400px&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-25T13:04:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">minor-coder</title><subtitle>안뇽</subtitle><author><name>minor-coder</name></author><entry><title type="html">node.js 개념</title><link href="http://localhost:4000/node.js/nodejs/" rel="alternate" type="text/html" title="node.js 개념" /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/node.js/nodejs</id><content type="html" xml:base="http://localhost:4000/node.js/nodejs/">&lt;p&gt;&lt;img src=&quot;/assets/images/nodejs.png&quot; alt=&quot;node.js logo&quot; width=&quot;400px&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;nodejs란&quot;&gt;node.js란?&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -95,104 +95,7 @@
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;서버로서의-노드&quot;&gt;서버로서의 노드&lt;/h2&gt;</content><author><name>minor-coder</name></author><category term="node.js" /><category term="node.js" /><category term="study" /><summary type="html">node.js란? Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임. 노드의 내부 구조 ┌──────────────────────┐ | Node.js Core Library | ├──────────────────────┤ | Node.js Bindings | ├──────────────────────┤ | V8 | libuv | └──────────────────────┘ 노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다. libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다. 이벤트 기반 이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식. ex) 마우스 클릭, 네트워크 요청 이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다. 이벤트 루프 이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함. Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능) Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음) 논 블로킹 I/O Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다. 논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다. 또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수) function longRunningTask(){ console.log('작업 끝'); } console.log('시작'); setTimeout(longRunningTask, 0); // longRunningTask() console.log('다음 작업'); result 시작 다음작업 작업 끝 싱글 스레드 스레드는 프로세스 내에서 실행되는 흐름의 단위이다. 프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능) 사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다. (다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.) 멀티 스레딩 멀티 프로세싱 한 개의 프로세스, 여러 개의 스레드 여러 개의 프로세스 CPU 작업이 많을 때 사용 I/O요청이 많을 때 사용 프로그래밍이 어려움 프로그래밍이 비교적 쉬움 서버로서의 노드</summary></entry><entry><title type="html">테스트입니다.</title><link href="http://localhost:4000/blog/nodejs/" rel="alternate" type="text/html" title="테스트입니다." /><published>2022-02-24T00:00:00+09:00</published><updated>2022-02-24T00:00:00+09:00</updated><id>http://localhost:4000/blog/nodejs</id><content type="html" xml:base="http://localhost:4000/blog/nodejs/">&lt;p&gt;&lt;img src=&quot;https://blog.kakaocdn.net/dn/y1eTS/btqJn1bFA22/Svn0GlZPcnkzFFKFCOhvn0/img.png&quot; alt=&quot;node.js logo&quot; width=&quot;400px&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;nodejs란&quot;&gt;node.js란?&lt;/h1&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;노드의-내부-구조&quot;&gt;노드의 내부 구조&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;┌──────────────────────┐
-| Node.js Core Library |
-├──────────────────────┤
-|   Node.js Bindings   |
-├──────────────────────┤
-|    V8    |   libuv   |
-└──────────────────────┘
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;노드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;V8 Javascript&lt;/code&gt; 엔진과 함께 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;libuv&lt;/code&gt; 라이브러리를 사용한다.
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;libuv&lt;/code&gt;라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;이벤트-기반&quot;&gt;이벤트 기반&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식.&lt;/p&gt;
-
-  &lt;p&gt;ex) 마우스 클릭, 네트워크 요청&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이벤트 기반 시스템은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이벤트 리스너&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;콜백함수&lt;/code&gt;를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;이벤트-루프&quot;&gt;이벤트 루프&lt;/h3&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;콜백함수&lt;/code&gt;를 호출 할 지 판단함.&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Background : &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능)&lt;/li&gt;
-    &lt;li&gt;Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;콜백함수&lt;/code&gt;를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음)&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;논-블로킹-io&quot;&gt;논 블로킹 I/O&lt;/h3&gt;
-&lt;p&gt;Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;논 블로킹&lt;/code&gt;이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다.&lt;/p&gt;
-
-&lt;p&gt;또한, I/O작업이라라도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;논 블로킹&lt;/code&gt; 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수)&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;longRunningTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;작업 끝&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;시작&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;longRunningTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// longRunningTask()&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;다음 작업&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result
-
-시작
-다음작업
-작업 끝
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;싱글-스레드&quot;&gt;싱글 스레드&lt;/h3&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스레드&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스&lt;/code&gt; 내에서 실행되는 &lt;strong&gt;흐름의 단위&lt;/strong&gt;이다. 
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스레드&lt;/code&gt;를 여러 개 생성해 작업을 동시에 처리할 수 있고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스레드&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;부모 프로세스&lt;/code&gt;의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;사실 &lt;strong&gt;node.js&lt;/strong&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;싱글 스레드&lt;/code&gt;가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스레드&lt;/code&gt;는 하나 뿐이라 &lt;strong&gt;node.js는 싱글 스레드&lt;/strong&gt;라고 여겨진다.
-&lt;br /&gt;(다만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스레드풀&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;워커 스레드&lt;/code&gt;로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;멀티 스레드&lt;/code&gt;를 사용 할 수 있다.)&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;멀티 스레딩&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;멀티 프로세싱&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;한 개의 프로세스, 여러 개의 스레드&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;여러 개의 프로세스&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;CPU 작업이 많을 때 사용&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;I/O요청이 많을 때 사용&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;프로그래밍이 어려움&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;프로그래밍이 비교적 쉬움&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;서버로서의-노드&quot;&gt;서버로서의 노드&lt;/h2&gt;</content><author><name>minor-coder</name></author><category term="Blog" /><category term="node.js" /><category term="study" /><summary type="html">node.js란? Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임. 노드의 내부 구조 ┌──────────────────────┐ | Node.js Core Library | ├──────────────────────┤ | Node.js Bindings | ├──────────────────────┤ | V8 | libuv | └──────────────────────┘ 노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다. libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다. 이벤트 기반 이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식. ex) 마우스 클릭, 네트워크 요청 이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다. 이벤트 루프 이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함. Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능) Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음) 논 블로킹 I/O Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다. 논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다. 또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수) function longRunningTask(){ console.log('작업 끝'); } console.log('시작'); setTimeout(longRunningTask, 0); // longRunningTask() console.log('다음 작업'); result 시작 다음작업 작업 끝 싱글 스레드 스레드는 프로세스 내에서 실행되는 흐름의 단위이다. 프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능) 사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다. (다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.) 멀티 스레딩 멀티 프로세싱 한 개의 프로세스, 여러 개의 스레드 여러 개의 프로세스 CPU 작업이 많을 때 사용 I/O요청이 많을 때 사용 프로그래밍이 어려움 프로그래밍이 비교적 쉬움 서버로서의 노드</summary></entry><entry><title type="html">Post: Standard</title><link href="http://localhost:4000/blog/new/" rel="alternate" type="text/html" title="Post: Standard" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/blog/new</id><content type="html" xml:base="http://localhost:4000/blog/new/">&lt;h1 id=&quot;h1-header&quot;&gt;H1 header&lt;/h1&gt;
+&lt;h2 id=&quot;서버로서의-노드&quot;&gt;서버로서의 노드&lt;/h2&gt;</content><author><name>minor-coder</name></author><category term="node.js" /><category term="node.js" /><category term="study" /><summary type="html">node.js란? Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임. 노드의 내부 구조 ┌──────────────────────┐ | Node.js Core Library | ├──────────────────────┤ | Node.js Bindings | ├──────────────────────┤ | V8 | libuv | └──────────────────────┘ 노드는 V8 Javascript 엔진과 함께 libuv 라이브러리를 사용한다. libuv라이브러리는 이벤트기반, 논 블록킹 I/O 모델을 구현한다. 이벤트 기반 이벤트 기반이란 이벤트가 발생할 때 미리 지정해둔 작업을 수행하는 방식. ex) 마우스 클릭, 네트워크 요청 이벤트 기반 시스템은 이벤트 리스너, 콜백함수를 등록해 특정 이벤트가 발생할 때 실행 시킬 수 있다. 이벤트 루프 이벤트 기반 모델에서 여러 이벤트가 동시에 발생했을 때 어떤 순서로 콜백함수를 호출 할 지 판단함. Background : setTimeout같은 타이머나 이벤트 리스너들이 대기하는 곳 (여러 작업 동시 실행 가능) Tesk Queue : 이벤트 발생 후, Backgound에서 Tesk Queue로 콜백함수를 보냄 (일반적으로 완료된 순서대로 실행되지만, 순서가 바뀌는 경우도 있음) 논 블로킹 I/O Javascript의 코드는 동시에 실행될 수 없지만, Javascript에서 돌아가는 것이 아닌 I/O작업과 같은 것들은 동시에 처리가 가능하다. 논 블로킹이란 이전 작업이 끝나기 전까지 대기하지 않고 다음 작업을 수행하지만, 작업 순서에 따라 성능이 크기 달라진다. 또한, I/O작업이라라도 논 블로킹 방식으로 구현하지 않으면 의미가 없다. (setTimeout, setImmediate 함수) function longRunningTask(){ console.log('작업 끝'); } console.log('시작'); setTimeout(longRunningTask, 0); // longRunningTask() console.log('다음 작업'); result 시작 다음작업 작업 끝 싱글 스레드 스레드는 프로세스 내에서 실행되는 흐름의 단위이다. 프로세스는 스레드를 여러 개 생성해 작업을 동시에 처리할 수 있고, 스레드는 부모 프로세스의 자원을 공유한다. (같은 주소 메모리 접근, 데이터 공유 가능) 사실 node.js는 싱글 스레드가 아니지만, 사용자가 일반적으로 직접 제어할 수 있는 스레드는 하나 뿐이라 node.js는 싱글 스레드라고 여겨진다. (다만, 스레드풀, 워커 스레드로 멀티 스레드를 사용 할 수 있다.) 멀티 스레딩 멀티 프로세싱 한 개의 프로세스, 여러 개의 스레드 여러 개의 프로세스 CPU 작업이 많을 때 사용 I/O요청이 많을 때 사용 프로그래밍이 어려움 프로그래밍이 비교적 쉬움 서버로서의 노드</summary></entry><entry><title type="html">Post: Standard</title><link href="http://localhost:4000/blog/new/" rel="alternate" type="text/html" title="Post: Standard" /><published>2022-02-23T00:00:00+09:00</published><updated>2022-02-23T00:00:00+09:00</updated><id>http://localhost:4000/blog/new</id><content type="html" xml:base="http://localhost:4000/blog/new/">&lt;h1 id=&quot;h1-header&quot;&gt;H1 header&lt;/h1&gt;
 
 &lt;h2 id=&quot;h2-header&quot;&gt;H2 header&lt;/h2&gt;
 
