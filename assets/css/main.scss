@@ -104,6 +104,21 @@ html {
     -ms-text-size-adjust: 100%;
 }
 
+// home archive
+.layout--home,
+.layout--posts,
+.layout--categories,
+.layout--tags{
+    .archive__item{
+        padding: 30px 0;
+        border-bottom: 1px solid $border-color;
+    }
+    .archive__item-teaser img{
+        object-fit: scale-down;
+        max-height: 250px;
+    }
+}
+
 // page header image
 .page__hero-image{
     object-fit: cover;
@@ -113,6 +128,11 @@ html {
 // page__title
 .page__title{
     color: $primary-color;
+}
+
+// post header
+.page .page__inner-wrap header{
+    margin-bottom: 1.3em;
 }
 
 // page meta
@@ -126,13 +146,10 @@ html {
     margin: 0;
 }
 
-.page__taxonomy:last-child{
-    margin-bottom: 1.3em;
-}
-
 .page__taxonomy-item {
-    padding: 5px 5px;
-    font-size: $type-size-7;
+    margin-right: 0;
+    padding: 2px 5px 0;
+    font-size: $type-size-6;
 }
 
 // comment width
@@ -179,7 +196,7 @@ html {
     }
 }
 
-// related
+// archive
 .archive__item-title{
     color: $primary-color;
 }
