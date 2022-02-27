@@ -1299,6 +1299,8 @@ html { font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 
 .page .page__inner-wrap header { margin-bottom: 1.3em; }
 
+.page .page__inner-wrap .toc header { margin-bottom: 0; }
+
 .page__meta, .comment__date { margin-bottom: 1em; }
 
 .page__taxonomy { font-size: 0.75em; margin: 0; }
