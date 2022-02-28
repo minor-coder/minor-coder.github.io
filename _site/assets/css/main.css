@@ -1317,3 +1317,7 @@ html { font-size: 14px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 .pagination_prev_next--pager:hover { background-color: #3a3f48 !important; }
 
 .archive__item-title { color: #E69587; }
+
+.page__related a { color: #E69587; }
+
+.page__related .page__taxonomy strong { font-size: 0.9em; }

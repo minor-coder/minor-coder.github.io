@@ -204,3 +204,12 @@ html {
 .archive__item-title{
     color: $primary-color;
 }
+
+// page__related
+.page__related a{
+    color: $primary-color;
+}
+
+.page__related .page__taxonomy strong{
+    font-size: $type-size-5;
+}
