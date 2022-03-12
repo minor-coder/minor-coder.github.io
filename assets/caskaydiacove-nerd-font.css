@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    src: url("fonts/Caskaydia Cove ExtraLight Nerd Font Complete Mono.woff2") format("woff2"),
+        url("fonts/Caskaydia Cove ExtraLight Nerd Font Complete Mono.ttf") format("truetype");
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 100;
+}
+@font-face {
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    src: url("fonts/Caskaydia Cove Light Nerd Font Complete Mono.woff2") format("woff2"),
+        url("fonts/Caskaydia Cove Light Nerd Font Complete Mono.ttf") format("truetype");
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    src: url("fonts/Caskaydia Cove SemiLight Nerd Font Complete Mono.woff2") format("woff2"),
+        url("fonts/Caskaydia Cove SemiLight Nerd Font Complete Mono.ttf") format("truetype");
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 300;
+}
+@font-face {
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    src: url("fonts/Caskaydia Cove Regular Nerd Font Complete Mono.woff2") format("woff2"),
+        url("fonts/Caskaydia Cove Regular Nerd Font Complete Mono.ttf") format("truetype");
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    src: url("fonts/Caskaydia Cove SemiBold Nerd Font Complete Mono.woff2") format("woff2"),
+        url("fonts/Caskaydia Cove SemiBold Nerd Font Complete Mono.ttf") format("truetype");
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 600;
+}
+@font-face {
+    font-family: "CaskaydiaCove Nerd Font Mono";
+    src: url("fonts/Caskaydia Cove Bold Nerd Font Complete Mono.woff2") format("woff2"),
+        url("fonts/Caskaydia Cove Bold Nerd Font Complete Mono.ttf") format("truetype");
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 700;
+}
